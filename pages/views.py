@@ -2,14 +2,28 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from .models import Contact
 
+from accounts.models import Profile
+from resume.models import Education, Skill, Achievement
+
 
 def home(request):
     return render(request, 'pages/home.html')
 
 
 def about(request):
-    return render(request, 'pages/about.html')
+    profile = Profile.objects.first()
+    educations = Education.objects.all()
+    skills = Skill.objects.all()
+    achievements = Achievement.objects.all()
 
+    context = {
+        'profile': profile,
+        'educations': educations,
+        'skills': skills,
+        'achievements': achievements,
+    }
+
+    return render(request, 'pages/about.html', context)
 
 def contact(request):
     if request.method == "POST":

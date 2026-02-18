@@ -1,6 +1,50 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>About Me</h1>
-<p>I am a developer building applications using Django and modern web technologies.</p>
+
+<div class="container section">
+
+    <div class="glass p-5 mb-5">
+        <h2 class="accent mb-3">About Me</h2>
+        <p class="text-secondary">
+            {{ profile.bio }}
+        </p>
+    </div>
+
+    <div class="glass p-5 mb-5">
+        <h3 class="accent mb-4">Education</h3>
+
+        {% for edu in educations %}
+            <div class="mb-4">
+                <h5>{{ edu.institution }}</h5>
+                <p class="text-secondary mb-1">{{ edu.degree }}</p>
+                <p class="text-secondary mb-1">{{ edu.score }}</p>
+                <small class="text-muted">{{ edu.duration }}</small>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="glass p-5 mb-5">
+        <h3 class="accent mb-4">Skills</h3>
+
+        {% for skill in skills %}
+            <div class="mb-3">
+                <strong>{{ skill.category }}</strong>
+                <p class="text-secondary">{{ skill.items }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="glass p-5">
+        <h3 class="accent mb-4">Achievements</h3>
+
+        {% for achievement in achievements %}
+            <div class="mb-3">
+                <strong>{{ achievement.title }}</strong>
+                <p class="text-secondary">{{ achievement.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
 {% endblock %}
