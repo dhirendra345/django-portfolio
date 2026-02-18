@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container section">
+
+    <div class="glass p-4 mb-4">
+        <h2 class="accent">Dashboard</h2>
+        <p>Welcome, {{ user.username }}</p>
+    </div>
+
+    <div class="glass p-4">
+        <h4 class="mb-3">Projects</h4>
+
+        {% for project in projects %}
+            <div class="mb-3">
+                <strong>{{ project.title }}</strong>
+                <small class="text-muted"> | {{ project.created_at }}</small>
+            </div>
+        {% empty %}
+            <p>No projects found.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

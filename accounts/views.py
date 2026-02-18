@@ -12,3 +12,11 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from projects.models import Project
+
+@login_required
+def dashboard(request):
+    projects = Project.objects.order_by('-created_at')
+    return render(request, 'accounts/dashboard.html', {'projects': projects})
