@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required, user_passes_test
+from projects.models import Project
+from pages.models import Contact  # Change if your model name differs
+
 
 def register(request):
     if request.method == 'POST':
@@ -11,12 +15,23 @@ def register(request):
             return redirect('home')
     else:
         form = UserCreationForm()
+
     return render(request, 'accounts/register.html', {'form': form})
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from projects.models import Project
+
+
+def is_admin(user):
+    return user.is_superuser
+
 
 @login_required
+@user_passes_test(is_admin)
 def dashboard(request):
     projects = Project.objects.order_by('-created_at')
-    return render(request, 'accounts/dashboard.html', {'projects': projects})
+    messages = Contact.objects.order_by('-created_at')
+
+    context = {
+        'projects': projects,
+        'messages': messages,
+    }
+
+    return render(request, 'accounts/dashboard.html', context)

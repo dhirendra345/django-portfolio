@@ -2,21 +2,44 @@
 
 {% block content %}
 
+
 <section class="hero-section">
     <div class="container text-center">
+
         <h1 class="mb-3">
-            Engineering <span class="accent">Backend Systems</span>
+            <span class="accent">Dhirendra Singh Kaushik</span>
         </h1>
 
+        <h3 class="mb-3">
+            Computer Science Engineer | AI & ML Specialist
+        </h3>
+
         <p class="text-secondary mb-4">
-            Django Developer | PostgreSQL | Machine Learning
+            Python • Django • Machine Learning • PostgreSQL • REST APIs
         </p>
 
-        <a href="#skills" class="btn btn-premium">
-            Explore More
+        <div class="mb-4">
+            <a href="https://github.com/dhirendra345" target="_blank" class="me-3 text-light">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/dhirendra14" target="_blank" class="me-3 text-light">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+
+            <span class="text-light">
+                <i class="fas fa-envelope"></i> dhirendrasinghkaushik2004@gmail.com
+            </span>
+        </div>
+
+        <a href="{% url 'projects' %}" class="btn btn-premium">
+            View My Projects
         </a>
+
     </div>
 </section>
+
+
 
 <section id="skills" class="section reveal">
     <div class="container">

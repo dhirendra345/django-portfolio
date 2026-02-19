@@ -3,21 +3,42 @@
 
 <div class="container section">
 
-    <div class="glass p-4 mb-4">
-        <h2 class="accent">Dashboard</h2>
+    <div class="glass p-4 mb-5">
+        <h2 class="accent">Admin Dashboard</h2>
         <p>Welcome, {{ user.username }}</p>
     </div>
 
-    <div class="glass p-4">
-        <h4 class="mb-3">Projects</h4>
+    <!-- Projects -->
+    <div class="glass p-4 mb-5">
+        <h4 class="accent mb-3">Projects</h4>
 
         {% for project in projects %}
-            <div class="mb-3">
+            <div class="mb-3 border-bottom pb-2">
                 <strong>{{ project.title }}</strong>
                 <small class="text-muted"> | {{ project.created_at }}</small>
             </div>
         {% empty %}
             <p>No projects found.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Contact Messages -->
+    <div class="glass p-4">
+        <h4 class="accent mb-3">Contact Messages</h4>
+
+        {% for message in messages %}
+            <div class="mb-4 p-3" style="background:#111; border-radius:10px;">
+                <strong>{{ message.name }}</strong><br>
+                <small class="text-muted">{{ message.email }}</small>
+                <p class="mt-2 text-secondary">
+                    {{ message.message }}
+                </p>
+                <small class="text-muted">
+                    {{ message.timestamp }}
+                </small>
+            </div>
+        {% empty %}
+            <p>No messages yet.</p>
         {% endfor %}
     </div>
 
