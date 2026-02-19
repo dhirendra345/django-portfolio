@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container section">
+    <div class="glass p-5 mx-auto" style="max-width: 800px;">
+
+        <h2 class="accent mb-4 text-center">Add Project</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label class="form-label">Title</label>
+                {{ form.title }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Description</label>
+                {{ form.description }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Image</label>
+                {{ form.image }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">GitHub Link</label>
+                {{ form.github_link }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Live Demo Link</label>
+                {{ form.live_link }}
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-premium px-4">
+                    Save Project
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

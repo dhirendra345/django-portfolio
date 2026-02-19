@@ -8,6 +8,14 @@
         <p class="text-secondary">
             {{ profile.bio }}
         </p>
+        <div class="text-center mb-4">
+    {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}"
+             class="rounded-circle profile-img"
+             style="width:200px; height:200px; object-fit:cover;">
+    {% endif %}
+</div>
+
     </div>
 
     <div class="glass p-5 mb-5">
@@ -18,7 +26,7 @@
                 <h5>{{ edu.institution }}</h5>
                 <p class="text-secondary mb-1">{{ edu.degree }}</p>
                 <p class="text-secondary mb-1">{{ edu.score }}</p>
-                <small class="text-muted">{{ edu.duration }}</small>
+                <small class="date-text">{{ edu.duration }}</small>
             </div>
         {% endfor %}
     </div>
